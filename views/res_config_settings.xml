@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.factura</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+
+                    <div class="app_settings_block" data-string="Factura" id="factura" string="Factura" data-key="factura_fiscal">
+                        <h2>Ajustes de la facturacion fiscal</h2>
+                        <div class="row mt16 o_settings_container" id="factura_setting">
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Tipo de Ambiente</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="iamb_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span> Tipo de Ambiente</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Tipo de Emision</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="itpemis_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span> Tipo de Emision</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt16 o_settings_container" id="factura_setting">
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Formato de CAFE</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="iformcafe_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span> Formato de Generacion del CAFE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Formato de CUFE</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="ientcafe_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span>Tipo de entrega del CUFE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt16 o_settings_container" id="factura_setting">
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Version del Formato</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="dverform_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span>Version del Formato</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Envio del CUFE</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="denvfe_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span>Tipo de envio del CUFE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt16 o_settings_container" id="factura_setting">
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Proceso de Generacion de la FE</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="iprogen_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span>Proceso de Generacion de la FE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Tipo de transacción de venta</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="itipotranventa_conf_options" class="text-center" style="width: 100%; min-width: 4rem;" />
+                                        <span>Tipo de transacción de venta</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </xpath>
+            </field>
+        </record>
+
+        <record id="factura_config_settings_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'factura_fiscal', 'bin_size': False}</field>
+        </record>
+
+        <menuitem id="factura_config_settings_menu" name="Settings"
+            parent="factura_fiscal.menu_facturafiscal" sequence="0" action="factura_config_settings_action"
+            groups="base.group_system"/>
+    </data>
+</odoo>
